@@ -27,3 +27,4 @@ export const getGameTypes = () => {
      })
         .then(response => response.json())
 }
+

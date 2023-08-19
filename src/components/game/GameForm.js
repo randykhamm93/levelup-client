@@ -96,26 +96,26 @@ export const GameForm = () => {
         </div>
       </fieldset>
       <button
-      type="submit"
-      onClick={evt => {
-        // Prevent form from being submitted
-        evt.preventDefault();
+        type="submit"
+        onClick={evt => {
+          // Prevent form from being submitted
+          evt.preventDefault();
 
-        const game = {
-          maker: currentGame.maker,
-          title: currentGame.title,
-          number_of_players: parseInt(currentGame.numberOfPlayers),
-          skill_level: parseInt(currentGame.skillLevel),
-          game_type: parseInt(currentGame.gameTypeId),
-        };
+          const game = {
+            maker: currentGame.maker,
+            title: currentGame.title,
+            number_of_players: parseInt(currentGame.numberOfPlayers),
+            skill_level: parseInt(currentGame.skillLevel),
+            game_type: parseInt(currentGame.gameTypeId),
+          };
 
-        // Send POST request to your API
-        createGame(game).then(() => navigate("/games"));
-      }}
-      className="btn-2 btn icon-create"
-    >
-      Create Game
-    </button>
-  </form>
+          // Send POST request to your API
+          createGame(game).then(() => navigate("/games"));
+        }}
+        className="btn-2 btn icon-create"
+      >
+        Create Game
+      </button>
+    </form>
   )
 }

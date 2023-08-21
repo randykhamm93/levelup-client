@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import { getGames } from '../../managers/GameManager.js';
+import { getEvents } from '../../managers/EventManager.js';
 import { createEvent } from '../../managers/EventManager.js';
+import { getGames } from "../../managers/GameManager.js";
 
 export const EventForm = () => {
+  const [events, setEvents] = useState([]);
   const [games, setGames] = useState([]);
   const navigate = useNavigate();
 
@@ -18,6 +20,7 @@ export const EventForm = () => {
   });
 
   useEffect(() => {
+    getEvents().then(data => setEvents(data));
     getGames().then(data => setGames(data));
   }, []);
 
@@ -43,7 +46,6 @@ export const EventForm = () => {
       organizer: parseInt(currentEvent.organizer)
     };
 
-    // Send POST request to your API
     createEvent(event).then(() => navigate("/events"));
   };
 
@@ -82,7 +84,6 @@ export const EventForm = () => {
           />
         </div>
       </fieldset>
-
       <fieldset>
         <div className="form-group">
           <label htmlFor="skillLevel">Skill Level: </label>
